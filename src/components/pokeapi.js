@@ -8,20 +8,31 @@ export default class FetchPokemonApi extends React.Component {
   }
 
   async componentDidMount() {
-    const pokeUrl = "https://pokeapi.co/api/v2/pokemon?limit=10";
+    const pokeUrl = "https://pokeapi.co/api/v2/pokemon/";
     const response = await fetch(pokeUrl);
+    
     // response.json gets us the actual data
     const pokeData = await response.json();
-    this.setState({ pokemon: pokeData.results[6], loading: false });
+    
+    // let randomPokemon = pokeData.results[Math.floor(Math.random() * pokeData.results.length)];
+
+    this.setState({ pokemon: pokeData.results, loading: false });
+
+  
+
     console.log(pokeData);
 
   }
 
 
   render() {
+    let items = [1, 2, 3, 4, 5];
+    let page = items[Math.floor(Math.random() * items.length)];
+    console.log(page)
     return (
       <div>
-        {this.state.loading ? <div>loading!</div> : <div>{this.state.pokemon.name}</div> }
+        {this.state.loading ? <div>loading!</div> : <div>{this.state.pokemon[page].name}</div> }
+        
       </div>
     )
   }

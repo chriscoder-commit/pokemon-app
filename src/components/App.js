@@ -7,11 +7,15 @@ import FetchPokemonApi from "./pokeapi"
 const App = () => {
   return (
     <div>
+      <Nav />
+
       {/* this is what is rendering my pokemon */}
+      
+      
+      <Main />
+
       <FetchPokemonApi>
       </FetchPokemonApi>
-      <Nav />
-      <Main />
     </div> 
   );
 }
